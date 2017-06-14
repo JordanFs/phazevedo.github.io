@@ -205,18 +205,24 @@ function calculo() {
 }
 
 function solucao() {
-    var outputDiv = document.getElementById('post-optimization');
-    var header = '<h4 class="text-center">SOLUÇÃO</h4>';
-    var paragrafos = '';
-    for (var i = 1; i < (matrix[0].length - 1); i++) {
-        var solucao = (matrix[0][i][0] == 'x' ? '' : '') + matrix[0][i];
-        var val = 0;
-        for (var rowIndex = 1; rowIndex < (matrix.length - 1); rowIndex++)
-            if (matrix[0][i] == matrix[rowIndex][0])
-                val = matrix[rowIndex][matrix[0].length - 1];
-        paragrafos += '<div class="item">' + solucao + ' = ' + val + '</div>';
+    var results = document.getElementById('post-optimization');
+    var htmlTitle = '<h3 class="text-center">Solução</h3>';
+    var table = '<table class="ui striped table">';
+    var header = '<thead><tr>';
+    for (var col = 1; col < (matrix[0].length - 1); col++)
+        header += "<th>" + matrix[0][col] + "</th>";
+    header += "<th>Z</th>"
+    table += header + '</tr></thead>';
+    var body = '<tbody>';
+    row = (matrix.length - 1) 
+        var tr = '<tr>';
+    for (var column = 1; (column < (matrix[0].length) ); column++) {
+            tr += '<td>' + matrix[row][column] + '</td>';
     }
-    outputDiv.innerHTML = "<div class='ui list'>" + header + paragrafos + "</div>";
+    // tr += "<td>"+ matrix[(matrix.length-1)][(matrix[0].length-1)] +"</td>"
+    body += tr + '</tr>';
+    table += body + '</tbody>';
+  results.innerHTML += htmlTitle + table + '</table><hr />';
 };
 
 function CondicaoParada() {
@@ -242,6 +248,7 @@ function Sensibilidade() {
     //Calcula Sensibilidade das variaveis de folga
     var subjectIndex = (matrix[0].length - subjects.length) - 1;
     console.log(subjectIndex);
+
     for (var index = 0; index < subjects.length; index++ , subjectIndex++) {
         var restricao = 'f' + (index + 1);
         var original = Number(subjects[index]);
@@ -269,39 +276,13 @@ function Sensibilidade() {
             minDelta += original;
             maxDelta += original;
             paragraphs += '<tr><td>' + restricao + '</td><td>' + original + '</td><td>' + shadowPrice + '</td><td>' + minDelta + '</td><td>' + maxDelta + '</td></tr>';
+        }else
+        {
+            paragraphs += '<tr><td>' + restricao + '</td><td>' +original + '</td><td>' + shadowPrice + '</td><td>Alterações irrelevantes</td></td>';
         }
     }
     //Calcula Sensibilidade das variaveis de Decisão
-    var z = arr_var_z;
-    var decisionIndex = z.length;
-    console.log(decisionIndex);
-    jQuery.each(z, function (index, value) {
-        var decision = 'x' + (index + 1);
-        var originalX = value;
-        var minDeltaX = Number.POSITIVE_INFINITY;
-        var maxDeltaX = Number.NEGATIVE_INFINITY;
-        var shadowPriceX = matrix[matrix.length - 1][index + 1];
-        if (shadowPriceX != 0) {
-            for (var i = 1; i < (matrix.length - 1); i++) {
-                var functionRow = Number(matrix[i][index + 1]);
-                var b = Number(matrix[i][matrix[0].length - 1]);
-
-                if (functionRow == 0)
-                    continue;
-
-                var deltaX = (-1 * b) / functionRow;
-
-                if (deltaX > maxDeltaX)
-                    maxDeltaX = deltaX;
-
-                if (deltaX < minDeltaX)
-                    minDeltaX = deltaX;
-            }
-            minDeltaX += originalX;
-            maxDeltaX += originalX;
-            paragraphsX += '<tr><td>' + decision + '</td><td>' + originalX + '</td><td>' + shadowPriceX + '</td><td>' + minDeltaX + '</td><td>' + maxDeltaX + '</td></tr>';
-        } 
-    });
+    
 
 
     outputDiv.innerHTML = title + "<table class='ui striped table'>" +
