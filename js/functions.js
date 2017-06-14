@@ -9,6 +9,7 @@ function clear() {
     arr_var_z = [];
     arr_arr_var_rests = [];
     arr_arr_fs = [];
+    loops = 1;
     $("#tables").empty();
     $("#post-optimization").empty();
     $("#sensibilidade").empty();
