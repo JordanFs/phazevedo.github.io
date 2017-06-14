@@ -214,15 +214,15 @@ function solucao() {
     header += "<th>Z</th>"
     table += header + '</tr></thead>';
     var body = '<tbody>';
-    row = (matrix.length - 1) 
-        var tr = '<tr>';
-    for (var column = 1; (column < (matrix[0].length) ); column++) {
-            tr += '<td>' + matrix[row][column] + '</td>';
+    row = (matrix.length - 1)
+    var tr = '<tr>';
+    for (var column = 1; (column < (matrix[0].length)); column++) {
+        tr += '<td>' + matrix[row][column] + '</td>';
     }
     // tr += "<td>"+ matrix[(matrix.length-1)][(matrix[0].length-1)] +"</td>"
     body += tr + '</tr>';
     table += body + '</tbody>';
-  results.innerHTML += htmlTitle + table + '</table><hr />';
+    results.innerHTML += htmlTitle + table + '</table><hr />';
 };
 
 function CondicaoParada() {
@@ -257,7 +257,7 @@ function Sensibilidade() {
 
         var shadowPrice = matrix[matrix.length - 1][subjectIndex];
 
-        if (shadowPrice != 0) {
+        
             for (var rowIndex = 1; rowIndex < (matrix.length - 1); rowIndex++) {
                 var functionRow = Number(matrix[rowIndex][subjectIndex]);
                 var bRow = Number(matrix[rowIndex][matrix[0].length - 1]);
@@ -275,14 +275,14 @@ function Sensibilidade() {
             }
             minDelta += original;
             maxDelta += original;
+        if (shadowPrice != 0) {
             paragraphs += '<tr><td>' + restricao + '</td><td>' + original + '</td><td>' + shadowPrice + '</td><td>' + minDelta + '</td><td>' + maxDelta + '</td></tr>';
-        }else
-        {
-            paragraphs += '<tr><td>' + restricao + '</td><td>' +original + '</td><td>' + shadowPrice + '</td><td>Alterações irrelevantes</td></td>';
+        } else {
+            paragraphs += '<tr><td>' + restricao + '</td><td>' + original + '</td><td>' + shadowPrice + '</td><td>' + minDelta + '</td><td>INFINITO</td></tr>';
         }
     }
     //Calcula Sensibilidade das variaveis de Decisão
-    
+
 
 
     outputDiv.innerHTML = title + "<table class='ui striped table'>" +
