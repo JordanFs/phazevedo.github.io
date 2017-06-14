@@ -26,7 +26,7 @@ function calcular() {
     setVariables();
     buildTable();
     // $('#btn_calc').hide();
-    while (loops < 100 && CondicaoParada())
+    while (loops < STOPBYLOOP && CondicaoParada())
         calculo();
     Sensibilidade();
     solucao();
