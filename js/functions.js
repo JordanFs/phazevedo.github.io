@@ -25,7 +25,6 @@ function calcular() {
     verify_fields();
     setVariables();
     buildTable();
-    clear_show();
     // $('#btn_calc').hide();
     while (loops < 100 && CondicaoParada())
         calculo();
