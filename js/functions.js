@@ -130,7 +130,7 @@ function buildTable() {
 function printTable(title) {
     var results = document.getElementById('tables');
     var htmlTitle = '<h3 class="text-center">' + title + '</h3>';
-    var table = '<table class="ui striped hoverable table">';
+    var table = '<table class="ui striped table">';
     var header = '<thead><tr>';
     for (var col = 0; col < matrix[0].length; col++)
         header += "<th>" + matrix[0][col] + "</th>";
@@ -304,7 +304,7 @@ function Sensibilidade() {
     });
 
 
-    outputDiv.innerHTML = title + "<table class='ui teal table'>" +
+    outputDiv.innerHTML = title + "<table class='ui striped table'>" +
         "<thead><tr><th>Sensibilidade</th>" +
         "<th>Original</th>" +
         "<th>Preço Sombra</th>" +
