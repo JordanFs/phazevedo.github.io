@@ -16,8 +16,10 @@ function clear() {
 
 function clear_show() {
 
-    // $("#show").empty();  
-    // $("#show").hide();  
+    $("#show").empty();  
+    $("#show").hide();  
+    $("#sensibilidade").empty();  
+    $("#sensibilidade").hide();  
 }
 
 function calcular() {
